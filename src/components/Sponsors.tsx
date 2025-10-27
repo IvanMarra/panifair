@@ -78,12 +78,17 @@ const Sponsors = () => {
                   key={index}
                   className="group relative bg-card rounded-xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-border/50 w-full max-w-sm"
                 >
-                  <div className="flex items-center justify-center h-32">
-                    <img 
-                      src={logo.logo}
-                      alt={logo.name}
-                      className="max-w-full max-h-full object-contain grayscale-0 group-hover:grayscale-0 transition-all duration-300"
-                    />
+                  <div className="flex flex-col items-center justify-center gap-4">
+                    <div className="flex items-center justify-center h-32">
+                      <img 
+                        src={logo.logo}
+                        alt={logo.name}
+                        className="max-w-full max-h-full object-contain grayscale-0 group-hover:grayscale-0 transition-all duration-300"
+                      />
+                    </div>
+                    <p className="text-center text-sm text-muted-foreground font-inter">
+                      Maffille gestão e negócios ltda.
+                    </p>
                   </div>
                 </div>
               ))}
