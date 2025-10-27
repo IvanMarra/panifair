@@ -118,7 +118,7 @@ const Footer = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-sm text-secondary-foreground/60">
-              © {currentYear}–2026 — <span className="font-semibold">Maffille</span> — Todos os direitos reservados
+              © {currentYear}–2026 — made by <a href="https://deviem.com.br" target="_blank" rel="noopener noreferrer" className="font-semibold hover:text-primary transition-colors duration-200">deviem</a> — Todos os direitos reservados
             </div>
             <div className="flex gap-6 text-sm">
               <button className="text-secondary-foreground/60 hover:text-primary transition-colors duration-200">
