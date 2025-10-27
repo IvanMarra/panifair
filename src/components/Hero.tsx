@@ -1,6 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const Hero = () => {
+  const [showContent, setShowContent] = useState(false);
+
+  useEffect(() => {
+    // Show content after 8 seconds
+    const contentTimer = setTimeout(() => {
+      setShowContent(true);
+    }, 8000);
+
+    return () => clearTimeout(contentTimer);
+  }, []);
+
   useEffect(() => {
     // Initialize YouTube video and controls
     const initializeVideo = () => {
@@ -49,26 +60,28 @@ const Hero = () => {
     <section id="hero" className="hero">
       <div className="hero-video" data-yt="q95-XCoskMI"></div>
       <div className="hero-overlay">
-        <img 
-          src="/assets/logo-panifair-photoshop.png" 
-          alt="PANIFAIR 2026" 
-          className="hero-logo"
-        />
-        <h1 className="font-playfair">PANIFAIR 2026</h1>
-        <p className="kicker font-inter">Feira Internacional da Panificação</p>
-        <p className="meta font-inter">
-          Belo Horizonte · 15, 16 e 17 de maio de 2026 · Centerminas Expo
-        </p>
-        <div className="cta-wrap">
-          <button onClick={scrollToInscricao} className="cta cta-primary">
-            Quero participar
-          </button>
-          <button onClick={scrollToInscricao} className="cta cta-secondary">
-            Quero expor
-          </button>
-          <button onClick={scrollToInscricao} className="cta cta-secondary">
-            Sou panificador
-          </button>
+        <div className={`transition-all duration-1000 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <img 
+            src="/assets/logo-panifair-photoshop.png" 
+            alt="PANIFAIR 2026" 
+            className="hero-logo"
+          />
+          <h1 className="font-playfair">PANIFAIR 2026</h1>
+          <p className="kicker font-inter">Feira Internacional da Panificação</p>
+          <p className="meta font-inter">
+            Belo Horizonte · 15, 16 e 17 de maio de 2026 · Centerminas Expo
+          </p>
+          <div className="cta-wrap">
+            <button onClick={scrollToInscricao} className="cta cta-primary">
+              Quero participar
+            </button>
+            <button onClick={scrollToInscricao} className="cta cta-secondary">
+              Quero expor
+            </button>
+            <button onClick={scrollToInscricao} className="cta cta-secondary">
+              Sou panificador
+            </button>
+          </div>
         </div>
         <button 
           className="play-fallback" 
