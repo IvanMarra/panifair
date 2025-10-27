@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Phone, Mail, Instagram, Send, User, Building, Camera, Loader2 } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
 const Registration = () => {
@@ -15,64 +14,57 @@ const Registration = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const getDeviceInfo = () => {
-    const ua = navigator.userAgent;
-    const platform = navigator.platform;
-    const language = navigator.language;
-    return `${ua} | Platform: ${platform} | Language: ${language}`;
-  };
-
-  const getLocationInfo = () => {
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const locale = navigator.language;
-    return `Timezone: ${timezone} | Locale: ${locale}`;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    if (import.meta.env.DEV) {
-      console.log('Form submission started for type:', formData.type);
-    }
-
     try {
-      const { data, error } = await supabase.functions.invoke('submit-registration', {
-        body: {
-          ...formData,
-          deviceInfo: getDeviceInfo(),
-          locationInfo: getLocationInfo()
-        }
-      });
-
-      if (import.meta.env.DEV) {
-        console.log('Edge function response:', { success: !!data, hasError: !!error });
+      // Formatar a mensagem do WhatsApp
+      const participationTypeLabel = participationType.find(p => p.value === formData.type)?.label || formData.type;
+      
+      let whatsappMessage = `*INSCRIÇÃO PANIFAIR 2026*\n\n`;
+      whatsappMessage += `📋 *Nome:* ${formData.name}\n`;
+      whatsappMessage += `📧 *E-mail:* ${formData.email}\n`;
+      whatsappMessage += `📱 *Telefone:* ${formData.phone}\n`;
+      
+      if (formData.company) {
+        whatsappMessage += `🏢 *Empresa:* ${formData.company}\n`;
+      }
+      
+      whatsappMessage += `👤 *Modalidade:* ${participationTypeLabel}\n`;
+      
+      if (formData.message) {
+        whatsappMessage += `\n💬 *Mensagem:*\n${formData.message}`;
       }
 
-      if (error) {
-        throw error;
-      }
-
+      // Abrir WhatsApp com a mensagem formatada
+      const phoneNumber = '5531982363535';
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+      
+      window.open(whatsappUrl, '_blank');
+      
       // Mostrar toast de sucesso
       toast({
-        title: "✓ Inscrição enviada com sucesso!",
-        description: "Recebemos sua inscrição. Entraremos em contato em breve.",
+        title: "✓ Redirecionando para WhatsApp",
+        description: "Você será redirecionado para enviar sua inscrição via WhatsApp.",
         duration: 5000,
       });
       
-      // Limpar formulário
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        type: 'participante',
-        message: ''
-      });
+      // Limpar formulário após um pequeno delay
+      setTimeout(() => {
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          type: 'participante',
+          message: ''
+        });
+      }, 1000);
     } catch (error: any) {
       // Mostrar toast de erro
       toast({
-        title: "✗ Erro ao enviar inscrição",
+        title: "✗ Erro ao processar inscrição",
         description: error.message || 'Por favor, tente novamente.',
         variant: "destructive",
         duration: 5000,
