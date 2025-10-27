@@ -63,7 +63,7 @@ const Sponsors = () => {
           {/* Seção de Patrocínio */}
           <div>
             <div className="text-center mb-12">
-              <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6">Realizadora</h2>
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6">Realização</h2>
               <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
             </div>
 
