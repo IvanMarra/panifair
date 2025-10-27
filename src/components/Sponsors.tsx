@@ -1,0 +1,67 @@
+import React from 'react';
+
+const sponsors = [
+  {
+    name: "AMIPÃO",
+    logo: "/assets/sponsors/logo-amipao.jpeg",
+    description: "Sindicato e Associação Mineira da Indústria de Panificação"
+  },
+  {
+    name: "Minas Pão",
+    logo: "/assets/sponsors/logo-minas-pao.jpeg",
+    description: "Minas Pão"
+  },
+  {
+    name: "Mafille Gestão",
+    logo: "/assets/sponsors/logo-maffille-gestao.png",
+    description: "Consultoria e Assessoria"
+  }
+];
+
+const Sponsors = () => {
+  return (
+    <section id="apoio-patrocinio" className="py-20 bg-muted/30">
+      <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto">
+          {/* Cabeçalho */}
+          <div className="text-center mb-16">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Apoio & Patrocínio
+            </h2>
+            <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-inter">
+              Agradecemos aos nossos parceiros por acreditarem neste projeto
+            </p>
+          </div>
+
+          {/* Grid de Logos */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-center">
+            {sponsors.map((sponsor, index) => (
+              <div 
+                key={index}
+                className="group relative bg-card rounded-xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-border/50"
+              >
+                <div className="flex items-center justify-center h-32">
+                  <img 
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    className="max-w-full max-h-full object-contain grayscale-0 group-hover:grayscale-0 transition-all duration-300"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Espaço para futuros patrocinadores */}
+          <div className="mt-16 text-center">
+            <p className="text-muted-foreground font-inter text-sm">
+              Quer ser um patrocinador? Entre em contato conosco.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Sponsors;
