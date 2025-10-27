@@ -65,10 +65,10 @@ const Footer = () => {
               </div>
             </div>
             
-            {/* Patrocinador Master */}
+            {/* Idealizador e Curador */}
             <div className="mt-6">
               <p className="text-sm text-secondary-foreground/70">
-                <strong>Patrocinador Master:</strong> Junior Maffille
+                <strong>Idealizador e Curador:</strong> Junior Maffille
               </p>
             </div>
           </div>
