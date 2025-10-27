@@ -70,9 +70,6 @@ const Sponsors = () => {
                 Realizadora
               </h2>
               <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-inter">
-                Nossos patrocinadores que tornam este evento possível
-              </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-center justify-items-center">
