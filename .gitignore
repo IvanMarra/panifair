@@ -29,5 +29,5 @@ dist-ssr
 *.env.local
 
 # lockfiles de outros gerenciadores
-package-lock.json
+#package-lock.json
 bun.lockb
