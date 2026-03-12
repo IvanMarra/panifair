@@ -28,11 +28,11 @@ const Location = () => {
     }
   ];
 
-  // Endereço correto do Centerminas Expo
+  // Endereço do Centerminas Expo
   const centerminasAddress = "Av. Pastor Anselmo Silvestre, 1495 - União, Belo Horizonte - MG, 31170-678";
   
-  // URL de embed do Google Maps gerado diretamente para o endereço fornecido, com zoom 4f15
-  const googleMapsEmbedUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3750.9999999999995!2d-43.938000!3d-19.866000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f15!3m3!1m2!1s0xa69919a69919a699%3A0x0!2sCenterminas+Expo!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr`;
+  // URL de embed do Google Maps para o endereço do Centerminas Expo
+  const googleMapsEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(centerminasAddress)}&z=16&output=embed`;
 
   return (
     <section id="local" className="py-20 bg-background">

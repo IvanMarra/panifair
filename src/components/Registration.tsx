@@ -1,86 +1,6 @@
-import { useState } from 'react';
-import { Phone, Mail, Instagram, Send, User, Building, Camera, Loader2 } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { Phone, Mail, Instagram } from 'lucide-react';
 
 const Registration = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    type: 'participante',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      // Formatar a mensagem do WhatsApp
-      const participationTypeLabel = participationType.find(p => p.value === formData.type)?.label || formData.type;
-      
-      let whatsappMessage = `*INSCRIÇÃO PANIFAIR 2026*\n\n`;
-      whatsappMessage += `📋 *Nome:* ${formData.name}\n`;
-      whatsappMessage += `📧 *E-mail:* ${formData.email}\n`;
-      whatsappMessage += `📱 *Telefone:* ${formData.phone}\n`;
-      
-      if (formData.company) {
-        whatsappMessage += `🏢 *Empresa:* ${formData.company}\n`;
-      }
-      
-      whatsappMessage += `👤 *Modalidade:* ${participationTypeLabel}\n`;
-      
-      if (formData.message) {
-        whatsappMessage += `\n💬 *Mensagem:*\n${formData.message}`;
-      }
-
-      // Abrir WhatsApp com a mensagem formatada
-      const phoneNumber = '5531982363535';
-      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-      
-      window.open(whatsappUrl, '_blank');
-      
-      // Mostrar toast de sucesso
-      toast({
-        title: "✓ Redirecionando para WhatsApp",
-        description: "Você será redirecionado para enviar sua inscrição via WhatsApp.",
-        duration: 5000,
-      });
-      
-      // Limpar formulário após um pequeno delay
-      setTimeout(() => {
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          company: '',
-          type: 'participante',
-          message: ''
-        });
-      }, 1000);
-    } catch (error: any) {
-      // Mostrar toast de erro
-      toast({
-        title: "✗ Erro ao processar inscrição",
-        description: error.message || 'Por favor, tente novamente.',
-        variant: "destructive",
-        duration: 5000,
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
-
   const contactMethods = [
     {
       icon: Phone,
@@ -105,12 +25,6 @@ const Registration = () => {
     }
   ];
 
-  const participationType = [
-    { value: 'participante', label: 'Participante', icon: User },
-    { value: 'expositor', label: 'Expositor', icon: Building },
-    { value: 'imprensa', label: 'Imprensa', icon: Camera }
-  ];
-
   return (
     <section id="inscricao" className="py-20 bg-gradient-elegant">
       <div className="container mx-auto px-4">
@@ -122,161 +36,30 @@ const Registration = () => {
             </h2>
             <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Preencha o formulário abaixo e escolha sua modalidade de inscrição: 
-              Participante | Expositor | Imprensa
+              Escaneie o QR Code abaixo para realizar sua inscrição no evento
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Registration Form */}
-            <div className="bg-card p-8 rounded-2xl border border-border/50 shadow-elegant">
+            {/* QR Code - Inscrição */}
+            <div className="bg-card p-8 rounded-2xl border border-border/50 shadow-elegant flex flex-col items-center justify-center">
               <h3 className="font-playfair text-2xl font-bold text-foreground mb-6">
-                Formulário de Inscrição
+                Inscrição via QR Code
               </h3>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Name */}
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                    Nome completo *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-input rounded-lg bg-background text-foreground placeholder-muted-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
-                    placeholder="Seu nome completo"
-                  />
-                </div>
-
-                {/* Email */}
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                    E-mail *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-input rounded-lg bg-background text-foreground placeholder-muted-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
-                    placeholder="seu@email.com"
-                  />
-                </div>
-
-                {/* Phone */}
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                    Telefone/WhatsApp *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    required
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-input rounded-lg bg-background text-foreground placeholder-muted-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
-                    placeholder="(31) 99999-9999"
-                  />
-                </div>
-
-                {/* Company */}
-                <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
-                    Empresa/Organização
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-input rounded-lg bg-background text-foreground placeholder-muted-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
-                    placeholder="Nome da sua empresa"
-                  />
-                </div>
-
-                {/* Participation Type */}
-                <div>
-                  <label htmlFor="type" className="block text-sm font-medium text-foreground mb-3">
-                    Modalidade de participação *
-                  </label>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    {participationType.map((type) => {
-                      const IconComponent = type.icon;
-                      return (
-                        <label key={type.value} className="relative cursor-pointer">
-                          <input
-                            type="radio"
-                            name="type"
-                            value={type.value}
-                            checked={formData.type === type.value}
-                            onChange={handleChange}
-                            className="sr-only"
-                          />
-                          <div className={`p-4 rounded-lg border-2 transition-all duration-200 ${
-                            formData.type === type.value 
-                              ? 'border-primary bg-primary/5' 
-                              : 'border-border hover:border-primary/50'
-                          }`}>
-                            <div className="flex flex-col items-center text-center space-y-2">
-                              <IconComponent className={`h-6 w-6 ${
-                                formData.type === type.value ? 'text-primary' : 'text-muted-foreground'
-                              }`} />
-                              <span className={`text-sm font-medium ${
-                                formData.type === type.value ? 'text-primary' : 'text-foreground'
-                              }`}>
-                                {type.label}
-                              </span>
-                            </div>
-                          </div>
-                        </label>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Message */}
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                    Mensagem (opcional)
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-input rounded-lg bg-background text-foreground placeholder-muted-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 resize-none"
-                    placeholder="Conte-nos mais sobre seu interesse no evento..."
-                  />
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full btn-hero flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="h-5 w-5 animate-spin" />
-                      Enviando...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="h-5 w-5" />
-                      Enviar inscrição
-                    </>
-                  )}
-                </button>
-              </form>
+              <p className="text-muted-foreground text-center mb-6">
+                Escaneie o código com a câmera do seu celular para acessar a página de inscrição
+              </p>
+              <div className="relative p-8 bg-white rounded-2xl shadow-xl border-2 border-primary/20 ring-4 ring-primary/5">
+                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-primary/15 via-transparent to-primary/10 -z-10 blur-sm" />
+                <img
+                  src="/assets/qrcode_panifair_2026.png"
+                  alt="QR Code para inscrição no PANIFAIR 2026"
+                  className="w-56 h-56 object-contain"
+                />
+              </div>
+              <p className="text-sm text-muted-foreground mt-4 text-center">
+                Ou clique em &quot;Quero participar&quot; ao lado
+              </p>
             </div>
 
             {/* Contact Information */}
@@ -317,15 +100,14 @@ const Registration = () => {
 
               {/* CTA Buttons */}
               <div className="space-y-4 pt-8">
-                <button 
-                  onClick={() => {
-                    const element = document.querySelector('#sobre');
-                    if (element) element.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="w-full btn-hero"
+                <a
+                  href="https://www.hbatools.com.br/panifair-2026__2617"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full btn-hero flex items-center justify-center"
                 >
                   Quero participar
-                </button>
+                </a>
                 <button 
                   onClick={() => {
                     window.open('https://wa.me/5531982363535?text=Olá! Gostaria de informações sobre como expor no PANIFAIR 2026.', '_blank');
