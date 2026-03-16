@@ -2,3 +2,6 @@ project_id = "iubvmmfjxxdfmjddudoz"
 
 [functions.submit-registration]
 verify_jwt = false
+
+[functions.get-analytics-dashboard]
+verify_jwt = false

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { trackClick } from '@/lib/analytics';
 
 const Hero = () => {
   const [showContent, setShowContent] = useState(false);
@@ -49,7 +50,8 @@ const Hero = () => {
     initializeVideo();
   }, []);
 
-  const scrollToInscricao = () => {
+  const scrollToInscricao = (cta: string) => {
+    trackClick(`hero_${cta}`);
     const element = document.getElementById('inscricao');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -72,15 +74,27 @@ const Hero = () => {
             Belo Horizonte · 15, 16 e 17 de maio de 2026 · Centerminas Expo
           </p>
           <div className="cta-wrap">
-            <button onClick={scrollToInscricao} className="cta cta-primary">
+            <a
+              href="https://www.hbatools.com.br/panifair-2026__2617"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackClick('hero_quero_participar')}
+              className="cta cta-primary"
+            >
               Quero participar
-            </button>
-            <button onClick={scrollToInscricao} className="cta cta-secondary">
+            </a>
+            <button onClick={() => scrollToInscricao('quero_expor')} className="cta cta-secondary">
               Quero expor
             </button>
-            <button onClick={scrollToInscricao} className="cta cta-secondary">
-              Sou panificador
-            </button>
+            <a
+              href="https://wa.me/5531983963167"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackClick('hero_quero_patrocinar')}
+              className="cta cta-secondary"
+            >
+              Quero Patrocinar
+            </a>
           </div>
         </div>
         <button 

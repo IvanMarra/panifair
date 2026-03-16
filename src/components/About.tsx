@@ -35,7 +35,7 @@ const About = () => {
                   <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                     <Users className="h-8 w-8 text-primary" />
                   </div>
-                  <h3 className="font-semibold text-foreground mb-2">50.000+</h3>
+                  <h3 className="font-semibold text-foreground mb-2">15.000+</h3>
                   <p className="text-sm text-muted-foreground">Visitantes esperados</p>
                 </div>
 

@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      analytics_events: {
+        Row: {
+          id: string
+          created_at: string
+          event_type: string
+          event_name: string | null
+          event_data: Json | null
+          url: string | null
+          referrer: string | null
+          user_agent: string | null
+          session_id: string | null
+        }
+        Insert: {
+          id?: string
+          created_at?: string
+          event_type: string
+          event_name?: string | null
+          event_data?: Json | null
+          url?: string | null
+          referrer?: string | null
+          user_agent?: string | null
+          session_id?: string | null
+        }
+        Update: {
+          id?: string
+          created_at?: string
+          event_type?: string
+          event_name?: string | null
+          event_data?: Json | null
+          url?: string | null
+          referrer?: string | null
+          user_agent?: string | null
+          session_id?: string | null
+        }
+        Relationships: []
+      }
       registrations: {
         Row: {
           company: string | null

@@ -1,4 +1,5 @@
 import { Phone, Mail, Instagram } from 'lucide-react';
+import { trackClick } from '@/lib/analytics';
 
 const Registration = () => {
   const contactMethods = [
@@ -82,6 +83,7 @@ const Registration = () => {
                       href={contact.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => trackClick(`contato_${contact.label.toLowerCase()}`, { channel: contact.label })}
                       className="flex items-center gap-4 p-6 bg-card rounded-xl border border-border/50 hover:shadow-card transition-all duration-300 group"
                     >
                       <div className={`bg-gradient-to-br ${contact.gradient} p-3 rounded-lg group-hover:scale-110 transition-transform duration-300`}>
@@ -104,18 +106,29 @@ const Registration = () => {
                   href="https://www.hbatools.com.br/panifair-2026__2617"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackClick('quero_participar', { cta: 'inscricao' })}
                   className="w-full btn-hero flex items-center justify-center"
                 >
                   Quero participar
                 </a>
                 <button 
                   onClick={() => {
+                    trackClick('quero_expor', { cta: 'whatsapp' });
                     window.open('https://wa.me/5531982363535?text=Olá! Gostaria de informações sobre como expor no PANIFAIR 2026.', '_blank');
                   }}
                   className="w-full btn-secondary"
                 >
                   Quero expor
                 </button>
+                <a
+                  href="https://wa.me/5531983963167"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackClick('quero_patrocinar', { cta: 'inscricao' })}
+                  className="w-full btn-secondary flex items-center justify-center"
+                >
+                  Quero patrocinar
+                </a>
               </div>
             </div>
           </div>

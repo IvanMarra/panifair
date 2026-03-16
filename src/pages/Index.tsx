@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -11,8 +12,12 @@ import Registration from '@/components/Registration';
 import Footer from '@/components/Footer';
 import BackToTop from '@/components/BackToTop';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import { trackPageView } from '@/lib/analytics';
 
 const Index = () => {
+  useEffect(() => {
+    trackPageView('/');
+  }, []);
   return (
     <div className="min-h-screen">
       <Navigation />

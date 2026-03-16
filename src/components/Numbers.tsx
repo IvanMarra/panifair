@@ -57,7 +57,7 @@ const Counter = ({ end, duration = 2000, suffix = "", prefix = "" }: CounterProp
 const Numbers = () => {
   const stats = [
     {
-      number: 50000,
+      number: 15000,
       suffix: "",
       label: "visitantes esperados",
       description: "Profissionais e entusiastas do setor"
@@ -88,7 +88,7 @@ const Numbers = () => {
       description: "Área dedicada às exposições"
     },
     {
-      number: 49,
+      number: 584,
       suffix: "",
       label: "assentos para palestras",
       description: "Auditório técnico-didático especializado"
