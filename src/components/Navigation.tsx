@@ -16,10 +16,11 @@ const Navigation = () => {
 
   const navItems = [
     { href: '#sobre', label: 'Sobre' },
-    { href: '#estrutura', label: 'Estrutura' }, // 'Padaria Modelo' foi removido daqui
+    { href: '#estrutura', label: 'Estrutura' },
     { href: '#numeros', label: 'Números' },
     { href: '#oportunidades', label: 'Oportunidades' },
     { href: '#local', label: 'Local' },
+    { href: '#horario', label: 'Horário' },
     { href: '#inscricao', label: 'Inscrição' }
   ];
 

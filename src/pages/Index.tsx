@@ -8,6 +8,7 @@ import Numbers from '@/components/Numbers';
 import Opportunities from '@/components/Opportunities';
 import Sponsors from '@/components/Sponsors';
 import Location from '@/components/Location';
+import Schedule from '@/components/Schedule';
 import Registration from '@/components/Registration';
 import Footer from '@/components/Footer';
 import BackToTop from '@/components/BackToTop';
@@ -30,6 +31,7 @@ const Index = () => {
         <Opportunities />
         <Sponsors />
         <Location />
+        <Schedule />
         <Registration />
       </main>
       <Footer />
