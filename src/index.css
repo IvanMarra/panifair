@@ -2,6 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Playfair Custom - fonte personalizada para logo */
+@font-face {
+  font-family: 'Playfair Custom';
+  src: url('https://fonts.gstatic.com/s/playfairdisplay/v30/nuFiD-vYSZviVYUb_rz76j3Bzh2m.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* Logo-text - estilização do título PANIFAIR 2026 */
+.logo-text {
+  font-family: 'Playfair Custom', 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 4rem;
+  letter-spacing: -0.02em;
+  text-transform: capitalize;
+}
+
+.logo-text span.logo-p {
+  font-size: 1.15em;
+  margin-right: -0.05em;
+}
+
+.logo-text span.logo-f {
+  position: relative;
+}
+
+.logo-text span.logo-f::after {
+  content: '';
+  position: absolute;
+  bottom: -0.1em;
+  left: 50%;
+  width: 0.15em;
+  height: 0.15em;
+  background: currentColor;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
 /* PANIFAIR 2026 Premium Design System */
 
 @layer base {
@@ -190,9 +228,12 @@
   }
   
   .hero h1 {
-    font-size: clamp(40px, 6vw, 84px);
     line-height: 1.02;
     margin: .2em 0 .1em;
+  }
+
+  .hero h1.logo-text {
+    font-size: clamp(2.5rem, 6vw, 4rem);
   }
   
   .hero .kicker {

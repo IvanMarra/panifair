@@ -20,7 +20,7 @@ const Hero = () => {
       if (!wrap) return;
       
       const ids = (wrap.dataset.yt || '').split(',').map(x => x.trim()).filter(Boolean);
-      const id = ids[0] || 'q95-XCoskMI';
+      const id = ids[0] || 'yLVAm5yyJp0';
       const src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&controls=0&playsinline=1&loop=1&playlist=${id}&modestbranding=1&rel=0`;
       
       const iframe = document.createElement('iframe');
@@ -60,7 +60,7 @@ const Hero = () => {
 
   return (
     <section id="hero" className="hero">
-      <div className="hero-video" data-yt="q95-XCoskMI"></div>
+      <div className="hero-video" data-yt="yLVAm5yyJp0"></div>
       <div className="hero-overlay">
         <div className={`transition-all duration-1000 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <img 
@@ -68,7 +68,9 @@ const Hero = () => {
             alt="PANIFAIR 2026" 
             className="hero-logo"
           />
-          <h1 className="font-playfair">PANIFAIR 2026</h1>
+          <h1 className="logo-text">
+            <span className="logo-p">P</span>ANIF<span className="logo-f">F</span>AIR 2026
+          </h1>
           <p className="kicker font-inter">Feira Internacional da Panificação</p>
           <p className="meta font-inter">
             Belo Horizonte · 15, 16 e 17 de maio de 2026 · Centerminas Expo
