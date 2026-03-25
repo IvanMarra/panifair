@@ -69,7 +69,7 @@ const Hero = () => {
             className="hero-logo"
           />
           <h1 className="logo-text">
-            <span className="logo-p">P</span>ANIF<span className="logo-f">F</span>AIR 2026
+            <span className="logo-p">P</span>ANI<span className="logo-f">F</span>AIR 2026
           </h1>
           <p className="kicker font-inter">Feira Internacional da Panificação</p>
           <p className="meta font-inter">
