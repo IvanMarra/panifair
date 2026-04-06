@@ -6,8 +6,8 @@ const Registration = () => {
     {
       icon: Phone,
       label: "WhatsApp",
-      value: "(31) 98236-3535",
-      href: "https://wa.me/5531982363535",
+      value: "+55 (31) 99175-3330",
+      href: "https://wa.me/5531991753330",
       gradient: "from-green-500 to-green-600"
     },
     {
@@ -114,7 +114,7 @@ const Registration = () => {
                 <button 
                   onClick={() => {
                     trackClick('quero_expor', { cta: 'whatsapp' });
-                    window.open('https://wa.me/5531982363535?text=Olá! Gostaria de informações sobre como expor no PANIFAIR 2026.', '_blank');
+                    window.open('https://wa.me/5531991753330?text=Olá! Gostaria de informações sobre como expor no PANIFAIR 2026.', '_blank');
                   }}
                   className="w-full btn-secondary"
                 >

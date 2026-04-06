@@ -1,7 +1,7 @@
 import { trackClick } from '@/lib/analytics';
 
 const WhatsAppButton = () => {
-  const phoneNumber = '5531982363535'; // Formato internacional: +55 31 98236-3535
+  const phoneNumber = '5531991753330'; // Celular BR: +55 (31) 99175-3330 (9 após o DDD é obrigatório no wa.me)
   const message = 'Olá! Gostaria de mais informações sobre a PANIFAIR 2026.';
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
