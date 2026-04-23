@@ -20,7 +20,7 @@ const Navigation = () => {
     { href: '#numeros', label: 'Números' },
     { href: '#oportunidades', label: 'Oportunidades' },
     { href: '#local', label: 'Local' },
-    { href: '#horario', label: 'Horário' },
+    { href: '#programacao', label: 'Programação' },
     { href: '#inscricao', label: 'Inscrição' }
   ];
 
