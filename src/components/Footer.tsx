@@ -1,4 +1,5 @@
-import { Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,17 +13,6 @@ const Footer = () => {
     { href: '#inscricao', label: 'Inscrições' }
   ];
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <footer className="bg-secondary text-secondary-foreground">
       {/* Main Footer Content */}
@@ -31,12 +21,13 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="lg:col-span-2 space-y-6">
             <div>
-              <button 
-                onClick={scrollToTop}
-                className="font-playfair text-3xl font-bold text-primary hover:text-primary/80 transition-colors duration-200"
+              <Link
+                to="/"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="inline-block font-playfair text-3xl font-bold text-primary hover:text-primary/80 transition-colors duration-200"
               >
                 PANIFAIR 2026
-              </button>
+              </Link>
               <p className="text-lg text-secondary-foreground/80 mt-2">
                 Feira Internacional da Panificação
               </p>
@@ -79,14 +70,14 @@ const Footer = () => {
               Navegação
             </h3>
             <ul className="space-y-3">
-              {quickLinks.slice(0, 3).map((link) => ( // Ajustado para 3 links
+              {quickLinks.slice(0, 3).map((link) => (
                 <li key={link.href}>
-                  <button
-                    onClick={() => scrollToSection(link.href)}
-                    className="text-secondary-foreground/70 hover:text-primary transition-colors duration-200 text-left"
+                  <a
+                    href={`/${link.href}`}
+                    className="text-secondary-foreground/70 hover:text-primary transition-colors duration-200 text-left block"
                   >
                     {link.label}
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -98,14 +89,14 @@ const Footer = () => {
               Informações
             </h3>
             <ul className="space-y-3">
-              {quickLinks.slice(3).map((link) => ( // Ajustado para os links restantes
+              {quickLinks.slice(3).map((link) => (
                 <li key={link.href}>
-                  <button
-                    onClick={() => scrollToSection(link.href)}
-                    className="text-secondary-foreground/70 hover:text-primary transition-colors duration-200 text-left"
+                  <a
+                    href={`/${link.href}`}
+                    className="text-secondary-foreground/70 hover:text-primary transition-colors duration-200 text-left block"
                   >
                     {link.label}
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -120,19 +111,25 @@ const Footer = () => {
             <div className="text-sm text-secondary-foreground/60">
               © {currentYear}–2026 — made by <a href="https://deviem.com.br" target="_blank" rel="noopener noreferrer" className="font-semibold hover:text-primary transition-colors duration-200">deviem</a> — Todos os direitos reservados
             </div>
-            <div className="flex gap-6 text-sm">
-              <button className="text-secondary-foreground/60 hover:text-primary transition-colors duration-200">
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+              <Link
+                to="/politica-de-privacidade"
+                className="text-secondary-foreground/60 hover:text-primary transition-colors duration-200"
+              >
                 Política de Privacidade
-              </button>
-              <button className="text-secondary-foreground/60 hover:text-primary transition-colors duration-200">
+              </Link>
+              <Link
+                to="/termos-de-uso"
+                className="text-secondary-foreground/60 hover:text-primary transition-colors duration-200"
+              >
                 Termos de Uso
-              </button>
-              <button 
-                onClick={() => scrollToSection('#inscricao')}
+              </Link>
+              <a
+                href="/#inscricao"
                 className="text-secondary-foreground/60 hover:text-primary transition-colors duration-200"
               >
                 Contato
-              </button>
+              </a>
             </div>
           </div>
         </div>
