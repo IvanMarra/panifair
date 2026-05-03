@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
+import GrandesNomes from '@/components/GrandesNomes';
 import About from '@/components/About';
 import EstruturaCenterminas from '@/components/EstruturaCenterminas'; // Novo componente para a estrutura
 import PadariaModeloMosaico from '@/components/PadariaModeloMosaico'; // Novo componente para o mosaico da padaria
@@ -24,6 +25,7 @@ const Index = () => {
       <Navigation />
       <main>
         <Hero />
+        <GrandesNomes />
         <About />
         <EstruturaCenterminas /> {/* Nova seção Centerminas Expo com parallax e vídeo */}
         <PadariaModeloMosaico /> {/* Nova seção Padaria Modelo em mosaico */}
