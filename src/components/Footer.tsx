@@ -1,5 +1,10 @@
 import { MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { trackClick } from '@/lib/analytics';
+
+const FOOTER_WHATSAPP_URL =
+  'https://wa.me/5531991753330?text=' +
+  encodeURIComponent('Olá! Gostaria de mais informações sobre a PANIFAIR 2026.');
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -125,8 +130,12 @@ const Footer = () => {
                 Termos de Uso
               </Link>
               <a
-                href="/#inscricao"
+                href={FOOTER_WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackClick('footer_contato_whatsapp')}
                 className="text-secondary-foreground/60 hover:text-primary transition-colors duration-200"
+                aria-label="Contato via WhatsApp"
               >
                 Contato
               </a>
