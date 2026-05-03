@@ -59,7 +59,7 @@ const Registration = () => {
                 />
               </div>
               <p className="text-sm text-muted-foreground mt-4 text-center">
-                Ou clique em &quot;Quero participar&quot; ao lado
+                Ou clique em &quot;Garanta o seu ingresso&quot; ao lado
               </p>
             </div>
 
@@ -109,7 +109,7 @@ const Registration = () => {
                   onClick={() => trackClick('quero_participar', { cta: 'inscricao' })}
                   className="w-full btn-hero flex items-center justify-center"
                 >
-                  Quero participar
+                  Garanta o seu ingresso
                 </a>
                 <button 
                   onClick={() => {

@@ -246,6 +246,22 @@ const events: EventItem[] = [
     image: '/assets/palestrantes/Sueli_Braga.png',
   },
   {
+    id: 'igor-martins',
+    day: 'sexta',
+    stage: 'fermento',
+    time: '14:30 às 16:00',
+    speaker: 'Igor Martins',
+    title: 'Tráfego pago, gestão do marketing digital e IA na panificação',
+    initials: 'IM',
+    location: 'Belo Horizonte',
+    organization: 'Maffile Digital',
+    format: 'Talk show com Sueli Braga e Felipe Vidotte',
+    tag: 'Marketing digital',
+    image: '/assets/palestrantes/igor_editado.png',
+    bio:
+      'É gestor de Marketing da Maffile Digital, empresa criada com o propósito de impulsionar negócios do setor de alimentação por meio de estratégias digitais eficientes. Com 8 anos de experiência, hoje coordena uma equipe de 12 profissionais entre videomaker, design, social media, story maker e editores. Destaca-se pela habilidade em gravação, fotografia e, principalmente, direção de conteúdo — área em que conduz grandes marcas a se posicionarem com clareza e autoridade no mundo digital. Sob sua liderança, a empresa expandiu sua atuação, atendendo hoje padarias, indústrias, fábricas e eventos, consolidando-se como uma parceira estratégica de crescimento. Também atua como mentor de posicionamento digital, ajudando empresários a desenvolverem comunicação estratégica e presença diante das câmeras, transformando conhecimento e experiência em influência e resultados concretos. Casado há cinco anos, tem na fé cristã um dos pilares que orientam sua vida pessoal e profissional.',
+  },
+  {
     id: 'marco-toledo',
     day: 'sexta',
     stage: 'fermento',

@@ -83,7 +83,7 @@ const Hero = () => {
               onClick={() => trackClick('hero_quero_participar')}
               className="cta cta-primary"
             >
-              Quero participar
+              Garanta o seu ingresso
             </a>
             <button onClick={() => scrollToInscricao('quero_expor')} className="cta cta-secondary">
               Quero expor

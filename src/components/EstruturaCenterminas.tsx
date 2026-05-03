@@ -47,25 +47,24 @@ export default function EstruturaCenterminas() {
             Centerminas Expo: palco do futuro da panificação
           </h2>
           <p className="mt-4 max-w-3xl text-white/90 text-lg font-inter">
-            Com <strong>57 mil m²</strong>, pé-direito de até <strong>14 metros</strong>, estacionamento
-            para <strong>2.300 veículos</strong> e acesso privilegiado a aeroportos, metrô e rede hoteleira,
-            o Centerminas Expo garante toda a infraestrutura necessária para um evento de nível internacional.
+            Com <strong>57 mil m²</strong>, pé-direito de até <strong>14 metros</strong> e acesso privilegiado a
+            aeroportos, metrô e rede hoteleira, o Centerminas Expo garante toda a infraestrutura necessária para um
+            evento de nível internacional.
           </p>
 
           {/* MÉTRICAS */}
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-8">
             {[
               { k: "57 mil m²", v: "Área total do evento" },
-              { k: "2.300", v: "Vagas de estacionamento" },
               { k: "14 metros", v: "Pé-direito máximo" },
               { k: "210 m²", v: "Padaria modelo" },
             ].map((m) => (
               <div
                 key={m.k}
-                className="rounded-2xl bg-white/10 backdrop-blur border border-white/15 py-8 px-5" // Aumentado o padding vertical
+                className="rounded-2xl bg-white/10 backdrop-blur border border-white/15 py-10 px-6 lg:py-12 lg:px-8 min-h-[148px] flex flex-col justify-center"
               >
-                <div className="text-xl font-semibold font-inter">{m.k}</div>
-                <div className="text-sm text-white/80 font-inter">{m.v}</div>
+                <div className="text-2xl lg:text-3xl font-semibold font-inter tracking-tight">{m.k}</div>
+                <div className="mt-2 text-sm lg:text-base text-white/80 font-inter leading-snug">{m.v}</div>
               </div>
             ))}
           </div>
@@ -76,7 +75,7 @@ export default function EstruturaCenterminas() {
               href="#inscricao"
               className="w-full sm:w-auto btn-hero" // Usando btn-hero e ajustando largura
             >
-              Quero participar
+              Garanta o seu ingresso
             </a>
             <a
               href="#oportunidades"

@@ -46,7 +46,7 @@ const PadariaModeloMosaico = () => {
               href="#inscricao"
               className="btn-hero"
             >
-              Quero participar
+              Garanta o seu ingresso
             </a>
             <a
               href="#oportunidades"
