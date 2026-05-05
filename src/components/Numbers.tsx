@@ -82,7 +82,7 @@ const Numbers = () => {
       description: "Mais 176 assentos adicionais disponíveis"
     },
     {
-      number: 2150,
+      number: 14000,
       suffix: " m²",
       label: "no salão principal",
       description: "Área dedicada às exposições"
