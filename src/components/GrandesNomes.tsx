@@ -9,7 +9,7 @@ type Speaker = {
 
 const speakers: Speaker[] = [
   {
-    name: 'Gustavo Trovão',
+    name: 'Gustavo Tubarão',
     image: '/assets/grandes-nomes/gustavo-trovao-no-mark.png',
     imageAlt: 'Gustavo Trovão — palestrante confirmado na PANIFAIR 2026',
     description: 'Uma presença de destaque para uma experiência marcante na Panifair.',
