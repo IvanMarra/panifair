@@ -134,7 +134,7 @@ const events: EventItem[] = [
     day: 'sexta',
     stage: 'principal',
     time: '16:00 às 17:00',
-    speaker: 'Gustavo Vanutti',
+    speaker: 'Gustavo Vannucci',
     title: 'As Tendências Globais do Varejo Aplicadas na Panificação',
     initials: 'GV',
     organization: 'Sebrae',
