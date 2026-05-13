@@ -3,6 +3,7 @@ import {
   CalendarDays,
   ChevronRight,
   Clock,
+  Globe,
   MapPin,
   Mic2,
   Sparkles,
@@ -28,6 +29,10 @@ type EventItem = {
   tag: string;
   bio?: string;
   image?: string;
+  /** Várias fotos na lateral, empilhadas (ex.: dupla de palestrantes) */
+  images?: string[];
+  /** Destaque editorial (ex.: presença internacional) */
+  highlight?: 'international';
 };
 
 const days: Array<{
@@ -109,7 +114,7 @@ const events: EventItem[] = [
     id: 'bia-fraga',
     day: 'sexta',
     stage: 'principal',
-    time: '14:00 às 15:00',
+    time: '14:00 às 14:50',
     speaker: 'Bia Fraga',
     title: 'Do Pedido ao Lucro: dominando o Delivery',
     initials: 'BF',
@@ -145,10 +150,27 @@ const events: EventItem[] = [
       'Conselheiro de administração, mestre em inovação e comportamento do consumidor e especialista em inteligência de mercado, tendências e inovação. Com mais de 35 anos de experiência, leva ao varejo insights práticos sobre estratégias comerciais, canais de venda e decisão orientada por dados.',
   },
   {
+    id: 'martin-puricelli',
+    day: 'sexta',
+    stage: 'principal',
+    time: '17:00 às 17:50',
+    speaker: 'Martin Puricelli',
+    title: 'Sua próxima filial não é física: está no Mercado Livre',
+    initials: 'MP',
+    organization: 'Grupo Brick Consultoria',
+    format: 'Palestra',
+    status: 'Presença internacional',
+    tag: 'Mercado Livre',
+    image: '/assets/palestrantes/Martin_Puricelli_Editado.png',
+    highlight: 'international',
+    bio:
+      'Especialista em estratégias de crescimento dentro do Mercado Livre, com atuação consolidada em toda a América Latina. À frente de uma consultoria certificada nível Silver pelo próprio marketplace, Martin acumula experiência real em desenvolvimento, otimização e escala de operações digitais — sempre com foco em resultados concretos e visão estratégica de longo prazo.',
+  },
+  {
     id: 'junior-mafille',
     day: 'sexta',
     stage: 'principal',
-    time: '17:00 às 18:00',
+    time: '18:00 às 18:50',
     speaker: 'Junior Mafille',
     title: 'Inovação na Panificação: transformação de ideias em resultados',
     initials: 'JM',
@@ -165,7 +187,7 @@ const events: EventItem[] = [
     stage: 'principal',
     time: '19:00 às 20:30',
     speaker: 'Júnior Mafille e convidados',
-    title: 'Júnior Mafille e Gustavo Tubarão',
+    title: 'Júnior Mafille e Gustavo Tubarão. Talk Show',
     initials: 'JC',
     location: 'Belo Horizonte',
     organization: 'Mafille',
@@ -191,9 +213,9 @@ const events: EventItem[] = [
     id: 'andrea-japiassu',
     day: 'sexta',
     stage: 'feminino',
-    time: '16:00 às 17:00',
+    time: '14:00 às 15:30',
     speaker: 'Andrea Japiassu',
-    title: 'PPP: A IA das Mulheres realmente Poderosas',
+    title: 'Uma vivência sensorial e disruptiva para mulheres empreendedoras: sinta seu corpo, se divirta e saia com confiança.',
     initials: 'AJ',
     location: 'Brasília',
     organization: 'Escola de Soberanas',
@@ -281,7 +303,7 @@ const events: EventItem[] = [
     stage: 'fermento',
     time: '17:00 às 17:50',
     speaker: 'Fernando Silveira',
-    title: 'Posicionamento Digital',
+    title: ' Fornadas de estratégias para melhorar as Vendas!',
     initials: 'FS',
     location: 'Belo Horizonte',
     organization: 'Sebrae',
@@ -320,7 +342,7 @@ const events: EventItem[] = [
     id: 'patricia-marques',
     day: 'sabado',
     stage: 'principal',
-    time: '14:30 às 15:30',
+    time: '14:40 às 15:30',
     speaker: 'Patrícia Marques',
     title: 'Tema a definir',
     initials: 'PM',
@@ -334,7 +356,7 @@ const events: EventItem[] = [
     id: 'weverton-sabado',
     day: 'sabado',
     stage: 'principal',
-    time: '15:30 às 16:30',
+    time: '15:30 às 16:20',
     speaker: 'Dr. Weverton Vilas Boas de Castro',
     title: 'Os impactos da reforma tributária na panificação',
     initials: 'WV',
@@ -349,7 +371,7 @@ const events: EventItem[] = [
     id: 'ze-felipe',
     day: 'sabado',
     stage: 'principal',
-    time: '16:30 às 17:30',
+    time: '16:30 às 17:20',
     speaker: 'Zé Felipe',
     title: 'Sede de Vencer',
     initials: 'ZF',
@@ -365,7 +387,7 @@ const events: EventItem[] = [
     id: 'fernando-sardinha',
     day: 'sabado',
     stage: 'principal',
-    time: '17:30 às 18:30',
+    time: '17:30 às 18:20',
     speaker: 'Fernando Sardinha',
     title: 'A Receita do Crescimento: Comunicação, Influência e Autoridade',
     initials: 'FS',
@@ -379,7 +401,7 @@ const events: EventItem[] = [
     id: 'fernando-bebber',
     day: 'sabado',
     stage: 'principal',
-    time: '18:30 às 19:30',
+    time: '18:30 às 19:20',
     speaker: 'Fernando Bebber',
     title: 'PAM: Padaria Artesanal Mineira. Todos juntos pelo pão.',
     initials: 'FB',
@@ -387,6 +409,17 @@ const events: EventItem[] = [
     format: 'Fermentação natural',
     tag: 'Pão artesanal',
     image: '/assets/palestrantes/Fernando_Bber.png',
+  },
+  {
+    id: 'patrick-catapano',
+    day: 'sabado',
+    stage: 'principal',
+    time: 'A confirmar',
+    speaker: 'Patrick Catapano',
+    title: 'Tema a definir',
+    initials: 'PC',
+    format: 'Convidado',
+    tag: 'Convidado especial',
   },
   {
     id: 'carol-vilaca',
@@ -513,24 +546,22 @@ const events: EventItem[] = [
     tag: 'Futuro',
   },
   {
-    id: 'weverton-domingo',
+    id: 'fernando-quadros',
     day: 'domingo',
     stage: 'principal',
-    time: '13:00 às 14:00',
-    speaker: 'Dr. Weverton Vilas Boas de Castro',
-    title: 'Os impactos da reforma tributária na panificação',
-    initials: 'WV',
+    time: '13:00 às 13:50',
+    speaker: 'Dr. Fernando Quadros',
+    title: 'O Direito do Trabalho e Futuro das relações trabalhistas.',
+    initials: 'FQ',
     location: 'Belo Horizonte',
-    tag: 'Reforma tributária',
-    image: '/assets/palestrantes/Weverton_Vilas_Boas.png',
-    bio:
-      'Advogado, gestor e especialista em governança e desenvolvimento institucional, reúne experiência em alta direção, mestrado em Direito Público e pós-graduação em Direito Internacional e Tributário.',
+    format: 'Direito do trabalho',
+    tag: 'Trabalho e gestão',
   },
   {
     id: 'paulo-padaria-sem-segredo',
     day: 'domingo',
     stage: 'principal',
-    time: '14:00 às 15:00',
+    time: '14:00 às 14:50',
     speaker: 'Paulo Padaria s/ Segredo',
     title: 'Tema a definir',
     initials: 'PS',
@@ -543,12 +574,15 @@ const events: EventItem[] = [
     stage: 'principal',
     time: '15:00 às 16:00',
     speaker: 'Júnior Mafille e Fernando Sardinha',
-    title: 'O posicionamento que vende',
+    title: 'O Posicionamento que vende',
     initials: 'JF',
     location: 'Belo Horizonte',
     format: 'Talk show',
     tag: 'Posicionamento',
-    image: '/assets/palestrantes/Fernando_Sardinha.png',
+    images: [
+      '/assets/palestrantes/Junior_Maffille.png',
+      '/assets/palestrantes/Fernando_Sardinha.png',
+    ],
   },
   {
     id: 'junior-convidados-domingo',
@@ -556,7 +590,7 @@ const events: EventItem[] = [
     stage: 'principal',
     time: '16:00 às 17:00',
     speaker: 'Júnior Mafille e convidados',
-    title: 'As histórias atrás da panificação',
+    title: 'A história atrás da panificação',
     initials: 'JC',
     location: 'Belo Horizonte',
     format: 'Talk show',
@@ -592,7 +626,7 @@ const events: EventItem[] = [
     stage: 'feminino',
     time: '16:00 às 17:00',
     speaker: 'Rose Ávila',
-    title: 'Segurança de alimentos',
+    title: 'O poder feminino que transforma segurança em lucro!',
     initials: 'RA',
     location: 'Belo Horizonte',
     tag: 'Segurança de alimentos',
@@ -618,7 +652,7 @@ const events: EventItem[] = [
     id: 'marcos-resende',
     day: 'domingo',
     stage: 'fermento',
-    time: '14:00 às 15:50',
+    time: '14:00 às 14:50',
     speaker: 'Marcos Resende',
     title: 'Como agregar valor com o cafezinho na padaria',
     initials: 'MR',
@@ -787,12 +821,18 @@ const ProgramacaoEventos = () => {
 
                     <div className="grid lg:grid-cols-2 gap-5">
                       {stageEvents.map((event) => (
-                        <EventCard
+                        <div
                           key={event.id}
-                          event={event}
-                          stage={stage}
-                          onOpen={() => setSelectedEvent(event)}
-                        />
+                          className={
+                            event.highlight === 'international' ? 'lg:col-span-2' : undefined
+                          }
+                        >
+                          <EventCard
+                            event={event}
+                            stage={stage}
+                            onOpen={() => setSelectedEvent(event)}
+                          />
+                        </div>
                       ))}
                     </div>
                   </div>
@@ -821,6 +861,82 @@ const SummaryCard = ({ label, value }: { label: string; value: string }) => (
   </div>
 );
 
+const speakerPhotoUrls = (event: Pick<EventItem, 'image' | 'images'>): string[] | null => {
+  const fromList = event.images?.filter(Boolean);
+  if (fromList?.length) return fromList;
+  if (event.image) return [event.image];
+  return null;
+};
+
+const SpeakerPhotoStack = ({
+  event,
+  isInternational,
+  variant,
+}: {
+  event: EventItem;
+  isInternational: boolean;
+  variant: 'card' | 'modal';
+}) => {
+  const urls = speakerPhotoUrls(event);
+  const frameBorder = isInternational
+    ? 'border-amber-400/50 shadow-inner ring-1 ring-white/60'
+    : 'border-border/70';
+  const initialsClass =
+    variant === 'modal'
+      ? 'text-4xl font-playfair font-bold text-brown-dark'
+      : 'text-2xl font-playfair font-bold text-brown-dark';
+
+  if (!urls?.length) {
+    return (
+      <div
+        className={`flex aspect-[4/5] items-center justify-center overflow-hidden rounded-lg border bg-gradient-to-br from-primary/25 to-brown-light/25 ${frameBorder}`}
+      >
+        <span className={initialsClass}>{event.initials}</span>
+      </div>
+    );
+  }
+
+  if (urls.length === 1) {
+    return (
+      <div
+        className={`flex aspect-[4/5] items-center justify-center overflow-hidden rounded-lg border bg-gradient-to-br from-primary/25 to-brown-light/25 ${frameBorder}`}
+      >
+        <img src={urls[0]} alt={event.speaker} className="h-full w-full object-cover" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex min-h-0 flex-col gap-3">
+      {urls.map((src, idx) => {
+        const isFirst = idx === 0;
+        const slotHeight =
+          variant === 'modal' ? 'h-[200px] sm:h-[220px]' : 'h-[184px] sm:h-[200px]';
+        return (
+          <div
+            key={`${src}-${idx}`}
+            className={`relative flex w-full shrink-0 flex-col overflow-hidden rounded-lg border bg-gradient-to-br from-primary/25 to-brown-light/25 ${slotHeight} ${frameBorder}`}
+          >
+            <div
+              className={`flex min-h-0 flex-1 flex-col px-2 ${
+                isFirst ? 'justify-start pb-1 pt-2.5' : 'justify-end pb-3.5 pt-1'
+              }`}
+            >
+              <img
+                src={src}
+                alt={`${event.speaker} — ${idx + 1}`}
+                className={`max-h-full w-full object-contain ${
+                  isFirst ? 'object-top' : 'object-bottom'
+                }`}
+              />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
 const EventCard = ({
   event,
   stage,
@@ -830,34 +946,64 @@ const EventCard = ({
   stage: (typeof stages)[number];
   onOpen: () => void;
 }) => {
+  const isInternational = event.highlight === 'international';
+  const stackedPhotos = speakerPhotoUrls(event);
+  const isDualStack = (stackedPhotos?.length ?? 0) >= 2;
+
   const details = [
     event.location && { icon: MapPin, label: event.location },
     event.organization && { icon: Mic2, label: event.organization },
     event.format && { icon: UserRound, label: event.format },
-    event.status && { icon: Sparkles, label: event.status },
+    event.status &&
+      !(isInternational && event.status === 'Presença internacional') && {
+        icon: Sparkles,
+        label: event.status,
+      },
   ].filter(Boolean) as Array<{ icon: typeof Clock; label: string }>;
 
   return (
-    <article className="h-full rounded-lg border border-border/60 bg-background shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-elegant overflow-hidden">
-      <div className="grid sm:grid-cols-[132px_1fr] h-full">
-        <div className="bg-muted/60 p-4">
-          <div className="aspect-[4/5] rounded-lg overflow-hidden border border-border/70 bg-gradient-to-br from-primary/25 to-brown-light/25 flex items-center justify-center">
-            {event.image ? (
-              <img
-                src={event.image}
-                alt={event.speaker}
-                className="h-full w-full object-cover"
-              />
-            ) : (
-              <span className="text-2xl font-playfair font-bold text-brown-dark">
-                {event.initials}
-              </span>
-            )}
-          </div>
+    <article
+      className={`relative h-full overflow-hidden rounded-2xl border shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-elegant ${
+        isInternational
+          ? 'border-amber-400/55 bg-gradient-to-br from-amber-50/90 via-card to-sky-50/40 ring-1 ring-amber-300/40 hover:ring-amber-400/55'
+          : 'rounded-lg border-border/60 bg-background'
+      }`}
+    >
+      {isInternational && (
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-amber-400 via-primary to-sky-500"
+          aria-hidden
+        />
+      )}
+      {isInternational && (
+        <div
+          className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-amber-400/15 blur-3xl"
+          aria-hidden
+        />
+      )}
+      <div
+        className={`grid h-full ${
+          isInternational
+            ? 'sm:grid-cols-[minmax(140px,200px)_1fr] lg:grid-cols-[220px_1fr]'
+            : isDualStack
+              ? 'sm:grid-cols-[158px_1fr]'
+              : 'sm:grid-cols-[132px_1fr]'
+        }`}
+      >
+        <div
+          className={`flex flex-col p-4 ${isInternational ? 'bg-gradient-to-b from-amber-100/50 to-muted/60' : 'bg-muted/60'}`}
+        >
+          <SpeakerPhotoStack event={event} isInternational={isInternational} variant="card" />
         </div>
 
-        <div className="p-5 flex flex-col min-h-full">
-          <div className="flex flex-wrap items-center gap-2 mb-4">
+        <div className="relative z-[1] flex min-h-full flex-col p-5">
+          <div className="mb-4 flex flex-wrap items-center gap-2">
+            {isInternational && (
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/40 bg-gradient-to-r from-amber-100 to-amber-50 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wide text-amber-950 shadow-sm">
+                <Globe className="h-3.5 w-3.5 text-sky-700" aria-hidden />
+                Presença internacional
+              </span>
+            )}
             <span className="inline-flex items-center gap-2 rounded-full bg-primary/12 px-3 py-1 text-xs font-bold text-brown-dark">
               <Clock className="h-3.5 w-3.5 text-primary" />
               {event.time}
@@ -869,10 +1015,14 @@ const EventCard = ({
             </span>
           </div>
 
-          <h5 className="text-xl font-bold text-foreground leading-tight">
+          <h5
+            className={`font-bold leading-tight text-foreground ${isInternational ? 'font-playfair text-2xl md:text-[1.65rem]' : 'text-xl'}`}
+          >
             {event.speaker}
           </h5>
-          <p className="text-muted-foreground font-medium leading-7 mt-2">
+          <p
+            className={`mt-2 font-medium leading-7 text-muted-foreground ${isInternational ? 'text-base md:text-lg' : ''}`}
+          >
             {event.title}
           </p>
 
@@ -924,16 +1074,29 @@ const EventDetailsModal = ({
   stage: (typeof stages)[number];
   onClose: () => void;
 }) => {
+  const isInternational = event.highlight === 'international';
+  const isDualModal = (speakerPhotoUrls(event)?.length ?? 0) >= 2;
+
   const details = [
     event.location && { icon: MapPin, label: event.location },
     event.organization && { icon: Mic2, label: event.organization },
     event.format && { icon: UserRound, label: event.format },
-    event.status && { icon: Sparkles, label: event.status },
+    event.status &&
+      !(isInternational && event.status === 'Presença internacional') && {
+        icon: Sparkles,
+        label: event.status,
+      },
   ].filter(Boolean) as Array<{ icon: typeof Clock; label: string }>;
 
   return (
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-brown-dark/70 px-4 py-6 backdrop-blur-sm">
-      <div className="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-lg bg-card shadow-premium">
+      <div
+        className={`relative max-h-[90vh] w-full max-w-4xl overflow-y-auto shadow-premium ${
+          isInternational
+            ? 'rounded-2xl border border-amber-400/40 bg-gradient-to-br from-amber-50/30 via-card to-sky-50/25 ring-1 ring-amber-300/35'
+            : 'rounded-lg bg-card'
+        }`}
+      >
         <button
           type="button"
           onClick={onClose}
@@ -943,25 +1106,21 @@ const EventDetailsModal = ({
           <X className="h-5 w-5" />
         </button>
 
-        <div className="grid md:grid-cols-[260px_1fr]">
-          <div className="bg-muted/60 p-5">
-            <div className="aspect-[4/5] overflow-hidden rounded-lg border border-border/70 bg-gradient-to-br from-primary/25 to-brown-light/25 flex items-center justify-center">
-              {event.image ? (
-                <img
-                  src={event.image}
-                  alt={event.speaker}
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <span className="text-4xl font-playfair font-bold text-brown-dark">
-                  {event.initials}
-                </span>
-              )}
-            </div>
+        <div
+          className={`grid ${isDualModal ? 'md:grid-cols-[minmax(280px,300px)_1fr]' : 'md:grid-cols-[260px_1fr]'}`}
+        >
+          <div className="flex flex-col bg-muted/60 p-5">
+            <SpeakerPhotoStack event={event} isInternational={isInternational} variant="modal" />
           </div>
 
           <div className="p-6 md:p-8">
-            <div className="flex flex-wrap items-center gap-2 mb-5">
+            <div className="mb-5 flex flex-wrap items-center gap-2">
+              {isInternational && (
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/45 bg-gradient-to-r from-amber-100 to-amber-50 px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wide text-amber-950">
+                  <Globe className="h-4 w-4 text-sky-700" aria-hidden />
+                  Presença internacional
+                </span>
+              )}
               <span className="inline-flex items-center gap-2 rounded-full bg-primary/12 px-3 py-1 text-xs font-bold text-brown-dark">
                 <Clock className="h-3.5 w-3.5 text-primary" />
                 {event.time}
@@ -973,7 +1132,9 @@ const EventDetailsModal = ({
               </span>
             </div>
 
-            <h3 className="font-playfair text-3xl md:text-4xl font-bold text-foreground leading-tight">
+            <h3
+              className={`font-playfair font-bold leading-tight text-foreground ${isInternational ? 'text-3xl md:text-[2.35rem]' : 'text-3xl md:text-4xl'}`}
+            >
               {event.speaker}
             </h3>
             <p className="text-lg text-muted-foreground font-medium leading-8 mt-3">
