@@ -28,7 +28,14 @@ type EventItem = {
   status?: string;
   tag: string;
   bio?: string;
+  /** Segundo currículo (ex.: convidado no mesmo card) */
+  bioGuest?: string;
+  bioGuestHeading?: string;
   image?: string;
+  /** `contain` evita cortar logos/arte institucional na lateral */
+  imageFit?: 'contain' | 'cover';
+  /** Card com flyer/arte em destaque (sem coluna de retrato lateral) */
+  cardLayout?: 'flyer';
   /** Várias fotos na lateral, empilhadas (ex.: dupla de palestrantes) */
   images?: string[];
   /** Destaque editorial (ex.: presença internacional) */
@@ -119,8 +126,11 @@ const events: EventItem[] = [
     title: 'Do Pedido ao Lucro: dominando o Delivery',
     initials: 'BF',
     organization: 'Sebrae',
-    status: 'A confirmar',
+    status: 'Confirmado',
     tag: 'Delivery',
+    image: '/assets/palestrantes/bia_Fraga_no_background_min.png',
+    bio:
+      'Bianca Fraga é CEO do Grupo Mindhub, um ecossistema de gestão que tem em seu guarda-chuva restaurantes próprios e uma escola para formar administradores que pensam de forma estratégica em seus negócios. Mentora de mais de 5000 alunos, Bianca é especialista em gestão financeira e eficiência no foodservice, além de fazer parte do grupo seleto de empresários do Conexão iFood, que tem relação direta com a organização, para melhorar o aplicativo e, principalmente, o desempenho dos restaurantes.',
   },
   {
     id: 'guilherme-contador',
@@ -171,7 +181,7 @@ const events: EventItem[] = [
     day: 'sexta',
     stage: 'principal',
     time: '18:00 às 18:50',
-    speaker: 'Junior Mafille',
+    speaker: 'Junior Maffille',
     title: 'Inovação na Panificação: transformação de ideias em resultados',
     initials: 'JM',
     location: 'Belo Horizonte',
@@ -186,7 +196,7 @@ const events: EventItem[] = [
     day: 'sexta',
     stage: 'principal',
     time: '19:00 às 20:30',
-    speaker: 'Júnior Mafille e convidados',
+    speaker: 'Júnior Mafille',
     title: 'Júnior Mafille e Gustavo Tubarão. Talk Show',
     initials: 'JC',
     location: 'Belo Horizonte',
@@ -194,6 +204,8 @@ const events: EventItem[] = [
     format: 'Talk show',
     tag: 'Talk show',
     image: '/assets/palestrantes/Gustavo_Tubarao.png',
+    bio:
+      'Gustavo Tubarão, cujo nome verdadeiro é Gustavo Almeida Freire, é um influenciador digital e humorista mineiro nascido em 28 de julho de 2000 em Cana Verde (MG). Ele conquistou milhões de seguidores ao retratar com humor o cotidiano da roça e se tornou referência nacional, recebendo prêmios como "Criador do Ano" no TikTok Awards 2023.',
   },
   {
     id: 'margareth-lopes',
@@ -337,6 +349,8 @@ const events: EventItem[] = [
     initials: 'AB',
     organization: 'ABIP',
     tag: 'Institucional',
+    image: '/assets/palestrantes/abip-brasil-size-min.png',
+    cardLayout: 'flyer',
   },
   {
     id: 'patricia-marques',
@@ -344,7 +358,7 @@ const events: EventItem[] = [
     stage: 'principal',
     time: '14:40 às 15:30',
     speaker: 'Patrícia Marques',
-    title: 'Tema a definir',
+    title: 'Comunicação que posiciona. Como Construir Autoridade e Influenciar Pessoas. Em um mercado onde falta gente e sobra concorrente',
     initials: 'PM',
     location: 'Belo Horizonte',
     tag: 'Curadoria',
@@ -447,7 +461,9 @@ const events: EventItem[] = [
     location: 'Belo Horizonte',
     format: 'Talk show',
     tag: 'Empresa familiar',
-    image: '/assets/palestrantes/Rose_Maffille.png',
+    image: '/assets/palestrantes/rose_maffille_no_background_min.png',
+    bio:
+      'É proprietária da Padaria Maffille, vencedora do prêmio de Melhor Padaria pela Revista Panificação Brasileira. Com mais de 10 anos de experiência no setor, é curadora da Padaria Modelo e se destaca pela sua atuação estratégica na gestão de produção. \n Nascida em Barbacena e residente em Belo Horizonte há mais de 12 anos, encontrou na panificação sua verdadeira vocação. À frente da Maffille, consolidou a marca como referência no segmento, conquistando, em apenas 3 anos, um dos prêmios mais conceituados da panificação brasileira. É administradora e gestora de expansão da Rede Mafille, reconhecida como uma das padarias de maior destaque em Belo Horizonte. Com mais de 10 anos de experiência no setor da panificação, construiu uma trajetória marcada pela liderança estratégica, visão de crescimento e forte atuação feminina no mercado. Sua carreira se destaca pela capacidade de unir gestão, inovação e desenvolvimento de equipes em um segmento cada vez mais competitivo.',
   },
   {
     id: 'karla-rocha',
@@ -470,7 +486,7 @@ const events: EventItem[] = [
     stage: 'feminino',
     time: '18:30 às 19:00',
     speaker: 'Renata, Albertina Pães',
-    title: 'Da arquitetura para padaria artesanal: novo modelo de negócio',
+    title: 'Painel Inspiração. Projeto Levain-te',
     initials: 'RA',
     location: 'Belo Horizonte',
     organization: 'Albertina Pães',
@@ -504,6 +520,9 @@ const events: EventItem[] = [
     initials: 'JG',
     location: 'São Paulo',
     tag: 'Sucessão',
+    image: '/assets/palestrantes/Juliana_Goncalves_no_background_min.png',
+    bio:
+      'Atua na profissionalização de famílias empresárias há 20 anos, com a estruturação da governança corporativa e familiar, Conselhos de Administração, de Família e de Herdeiros, de Sócios, Acordos de Acionistas, Protocolos de Família, planejamento sucessório, projeto de desenvolvimento da família e Mediação de Conflitos.',
   },
   {
     id: 'claudete-bunge',
@@ -528,7 +547,7 @@ const events: EventItem[] = [
     title: 'Gestão',
     initials: 'PH',
     location: 'Belo Horizonte',
-    tag: 'Gestão',
+    tag: 'Mão de obra não é desfio é solução',
     image: '/assets/palestrantes/Pedro_Henrique.png',
     bio:
       'Pedro Henrique Oliveira é empresário, marketólogo e especialista em marketing e gestão. Professor da pós-graduação do Senac Minas, consultor do Sebrae Nacional e criador da metodologia GASTROLOGIA.',
@@ -556,17 +575,23 @@ const events: EventItem[] = [
     location: 'Belo Horizonte',
     format: 'Direito do trabalho',
     tag: 'Trabalho e gestão',
+    image: '/assets/palestrantes/fernando_quadros_no_background_min.png',
+    bio:
+      'Fernando Quadros, natural de Belo Horizonte, Graduado em Direito pela FUMEC, Mestre em Direito pela Universidade Gama Filho/RJ, Advogado na área empresarial com experiência de atuação para redes de panificação, Professor Universitário desde 2001, foi Conselheiro e Diretor da OAB/MG, ex-Presidente da Associação dos Advogados de Minas Gerais.',
   },
   {
     id: 'paulo-padaria-sem-segredo',
     day: 'domingo',
     stage: 'principal',
     time: '14:00 às 14:50',
-    speaker: 'Paulo Padaria s/ Segredo',
-    title: 'Tema a definir',
+    speaker: 'Paulo Dourado',
+    title: 'Padaria sem segredo.',
     initials: 'PS',
     location: 'São Paulo',
     tag: 'Em atualização',
+    image: '/assets/palestrantes/Paulo_Dourado_no_background_min.png',
+    bio:
+      'Paulo Dourado é um padeiro e empresário com mais de 15 anos de experiência no ramo da panificação. Ele é o fundador do Padaria Sem Segredos, o maior canal de panificação do Brasil, que impacta milhões de pessoas diariamente através das redes sociais. Sua trajetória começou de forma simples, com poucos recursos, e hoje ele lidera um negócio com múltiplas unidades. Ao longo dos anos, Paulo se tornou uma referência nacional ao ensinar, de forma prática e acessível, receitas, técnicas de produção e gestão para padarias.',
   },
   {
     id: 'junior-sardinha',
@@ -583,19 +608,27 @@ const events: EventItem[] = [
       '/assets/palestrantes/Junior_Maffille.png',
       '/assets/palestrantes/Fernando_Sardinha.png',
     ],
+    bio:
+      'Criado na zona rural de Viçosa, Júnior Mafille iniciou sua trajetória empresarial ainda jovem e construiu uma carreira de destaque no setor de panificação. Com mais de 25 anos de experiência, lidera uma rede de padarias, restaurantes e negócios correlatos.',
   },
   {
     id: 'junior-convidados-domingo',
     day: 'domingo',
     stage: 'principal',
     time: '16:00 às 17:00',
-    speaker: 'Júnior Mafille e convidados',
+    speaker: 'Júnior Mafille recebe: Tarcísio Andrade e Vinícius Dantas',
     title: 'A história atrás da panificação',
     initials: 'JC',
     location: 'Belo Horizonte',
     format: 'Talk show',
     tag: 'Histórias',
-    image: '/assets/palestrantes/Junior_Maffille.png',
+    images: [
+      '/assets/palestrantes/Junior_Maffille.png',
+      '/assets/palestrantes/Tarcisio_Andrade_No_Background_min.png',
+      '/assets/palestrantes/Vinicius_Dantas_no_background_min.png',
+    ],
+    bio:
+      'Criado na zona rural de Viçosa, Júnior Mafille iniciou sua trajetória empresarial ainda jovem e construiu uma carreira de destaque no setor de panificação. Com mais de 25 anos de experiência, lidera uma rede de padarias, restaurantes e negócios correlatos.',
   },
   {
     id: 'tiao',
@@ -608,6 +641,20 @@ const events: EventItem[] = [
     format: 'Ativação especial',
     tag: 'Atração especial',
     image: '/assets/palestrantes/Tiao_Bruto.png',
+  },
+  {
+    id: 'sueli-braga',
+    day: 'domingo',
+    stage: 'feminino',
+    time: '11:00 às 12:00',
+    speaker: 'Sueli Braga',
+    title: 'Padaria lotada todos os dias',
+    initials: 'SB',
+    location: 'Belo Horizonte',
+    tag: 'Marketing',
+    image: '/assets/palestrantes/Sueli_Braga.png',
+    bio:
+      'Especialista em tráfego pago desde 2019, ajuda empresários a atrair mais clientes pela internet. É fundadora do projeto Insta Padaria, dedicado a posicionamento digital, presença online e anúncios pagos para panificadores.',
   },
   {
     id: 'feminino-domingo-confirmar',
@@ -633,20 +680,6 @@ const events: EventItem[] = [
     image: '/assets/palestrantes/Rose_Avila.png',
     bio:
       'Bióloga, auditora líder em FSSC 22000 e especialista em Vigilância Sanitária e epidemiologia, atua com gestão da segurança de alimentos, assuntos regulatórios, controle de qualidade e consultoria para entidades do setor alimentício.',
-  },
-  {
-    id: 'sueli-braga',
-    day: 'domingo',
-    stage: 'fermento',
-    time: '11:00 às 12:00',
-    speaker: 'Sueli Braga',
-    title: 'Padaria lotada todos os dias',
-    initials: 'SB',
-    location: 'Belo Horizonte',
-    tag: 'Marketing',
-    image: '/assets/palestrantes/Sueli_Braga.png',
-    bio:
-      'Especialista em tráfego pago desde 2019, ajuda empresários a atrair mais clientes pela internet. É fundadora do projeto Insta Padaria, dedicado a posicionamento digital, presença online e anúncios pagos para panificadores.',
   },
   {
     id: 'marcos-resende',
@@ -824,7 +857,9 @@ const ProgramacaoEventos = () => {
                         <div
                           key={event.id}
                           className={
-                            event.highlight === 'international' ? 'lg:col-span-2' : undefined
+                            event.highlight === 'international' || event.cardLayout === 'flyer'
+                              ? 'lg:col-span-2'
+                              : undefined
                           }
                         >
                           <EventCard
@@ -897,11 +932,20 @@ const SpeakerPhotoStack = ({
   }
 
   if (urls.length === 1) {
+    const fitContain = event.imageFit === 'contain';
     return (
       <div
-        className={`flex aspect-[4/5] items-center justify-center overflow-hidden rounded-lg border bg-gradient-to-br from-primary/25 to-brown-light/25 ${frameBorder}`}
+        className={`flex aspect-[4/5] items-center justify-center overflow-hidden rounded-lg border ${frameBorder} ${
+          fitContain
+            ? 'bg-card p-3'
+            : 'bg-gradient-to-br from-primary/25 to-brown-light/25'
+        }`}
       >
-        <img src={urls[0]} alt={event.speaker} className="h-full w-full object-cover" />
+        <img
+          src={urls[0]}
+          alt={event.speaker}
+          className={fitContain ? 'h-full w-full object-contain' : 'h-full w-full object-cover'}
+        />
       </div>
     );
   }
@@ -909,7 +953,6 @@ const SpeakerPhotoStack = ({
   return (
     <div className="flex min-h-0 flex-col gap-3">
       {urls.map((src, idx) => {
-        const isFirst = idx === 0;
         const slotHeight =
           variant === 'modal' ? 'h-[200px] sm:h-[220px]' : 'h-[184px] sm:h-[200px]';
         return (
@@ -917,23 +960,109 @@ const SpeakerPhotoStack = ({
             key={`${src}-${idx}`}
             className={`relative flex w-full shrink-0 flex-col overflow-hidden rounded-lg border bg-gradient-to-br from-primary/25 to-brown-light/25 ${slotHeight} ${frameBorder}`}
           >
-            <div
-              className={`flex min-h-0 flex-1 flex-col px-2 ${
-                isFirst ? 'justify-start pb-1 pt-2.5' : 'justify-end pb-3.5 pt-1'
-              }`}
-            >
+            <div className="flex min-h-0 flex-1 flex-col justify-end px-2 pb-0 pt-0 leading-none sm:px-2.5">
               <img
                 src={src}
                 alt={`${event.speaker} — ${idx + 1}`}
-                className={`max-h-full w-full object-contain ${
-                  isFirst ? 'object-top' : 'object-bottom'
-                }`}
+                className="block max-h-full w-full object-contain object-bottom"
               />
             </div>
           </div>
         );
       })}
     </div>
+  );
+};
+
+const FlyerEventCard = ({
+  event,
+  stage,
+  onOpen,
+}: {
+  event: EventItem;
+  stage: (typeof stages)[number];
+  onOpen: () => void;
+}) => {
+  const flyerSrc = event.image;
+  if (!flyerSrc) return null;
+
+  return (
+    <article className="group relative overflow-hidden rounded-2xl border border-amber-200/55 bg-gradient-to-b from-amber-50/50 via-card to-background shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-elegant">
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-amber-500 via-primary to-amber-700"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -right-24 top-24 h-72 w-72 rounded-full bg-primary/12 blur-3xl"
+        aria-hidden
+      />
+
+      <div className="relative z-[1] flex flex-col gap-4 border-b border-border/60 bg-gradient-to-r from-card via-card to-amber-50/40 px-5 py-5 sm:px-7 sm:py-6 md:flex-row md:items-end md:justify-between">
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center gap-2 rounded-full bg-primary/15 px-3 py-1 text-xs font-bold text-brown-dark">
+              <Clock className="h-3.5 w-3.5 shrink-0 text-primary" />
+              {event.time}
+            </span>
+            <span
+              className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold ${stage.className}`}
+            >
+              {stage.shortLabel}
+            </span>
+            <span className="inline-flex items-center rounded-full border border-amber-500/35 bg-amber-100/90 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.12em] text-amber-950">
+              Flyer oficial
+            </span>
+          </div>
+          <h3 className="font-playfair mt-3 text-[clamp(1.35rem,3.5vw,2rem)] font-extrabold leading-tight tracking-tight text-foreground md:text-[2.125rem]">
+            {event.speaker}
+          </h3>
+          <p className="mt-2 text-base font-medium leading-relaxed text-muted-foreground md:text-lg">
+            {event.title}
+          </p>
+        </div>
+        {event.organization && (
+          <p className="shrink-0 text-sm font-semibold text-muted-foreground md:max-w-[12rem] md:text-right">
+            {event.organization}
+          </p>
+        )}
+      </div>
+
+      <div className="relative z-[1] p-4 sm:p-6 md:p-8">
+        <div className="relative overflow-hidden rounded-xl border border-amber-900/12 bg-gradient-to-b from-white to-amber-50/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] ring-1 ring-black/[0.06]">
+          <div
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_50%_-10%,rgba(251,191,36,0.18),transparent_55%)]"
+            aria-hidden
+          />
+          <img
+            src={flyerSrc}
+            alt={`${event.speaker} — ${event.title}`}
+            className="relative z-[1] mx-auto block w-full max-h-[min(78vh,820px)] object-contain px-2 py-3 sm:px-4 sm:py-5"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <div className="mt-5 flex flex-col gap-4 border-t border-border/50 pt-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Arte de divulgação da ABIP para este bloco da programação — material visual, sem currículo de
+            palestrante.
+          </p>
+          <div className="flex shrink-0 flex-wrap items-center gap-3">
+            <span className="rounded-full bg-primary/12 px-3 py-1.5 text-xs font-bold text-brown-dark">
+              {event.tag}
+            </span>
+            <button
+              type="button"
+              onClick={onOpen}
+              className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/5 px-4 py-2 text-sm font-bold text-primary transition-colors hover:bg-primary/15"
+            >
+              Ampliar flyer
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </article>
   );
 };
 
@@ -946,6 +1075,10 @@ const EventCard = ({
   stage: (typeof stages)[number];
   onOpen: () => void;
 }) => {
+  if (event.cardLayout === 'flyer' && event.image) {
+    return <FlyerEventCard event={event} stage={stage} onOpen={onOpen} />;
+  }
+
   const isInternational = event.highlight === 'international';
   const stackedPhotos = speakerPhotoUrls(event);
   const isDualStack = (stackedPhotos?.length ?? 0) >= 2;
@@ -1044,6 +1177,16 @@ const EventCard = ({
             <p className="mt-2 text-sm leading-6 text-muted-foreground [display:-webkit-box] [-webkit-line-clamp:4] [-webkit-box-orient:vertical] overflow-hidden">
               {event.bio ?? 'Currículo em breve.'}
             </p>
+            {event.bioGuest && (
+              <>
+                <span className="mt-3 block text-xs font-bold uppercase tracking-wide text-primary">
+                  {event.bioGuestHeading ?? 'Convidado'}
+                </span>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground [display:-webkit-box] [-webkit-line-clamp:4] [-webkit-box-orient:vertical] overflow-hidden">
+                  {event.bioGuest}
+                </p>
+              </>
+            )}
           </div>
 
           <div className="mt-auto pt-5 flex items-center justify-between gap-4">
@@ -1075,7 +1218,65 @@ const EventDetailsModal = ({
   onClose: () => void;
 }) => {
   const isInternational = event.highlight === 'international';
-  const isDualModal = (speakerPhotoUrls(event)?.length ?? 0) >= 2;
+  const isFlyer = event.cardLayout === 'flyer' && Boolean(event.image);
+  const isDualModal = !isFlyer && (speakerPhotoUrls(event)?.length ?? 0) >= 2;
+
+  if (isFlyer && event.image) {
+    return (
+      <div className="fixed inset-0 z-[70] flex items-center justify-center bg-brown-dark/75 px-3 py-6 backdrop-blur-sm sm:px-6">
+        <div className="relative max-h-[92vh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-amber-200/55 bg-gradient-to-b from-amber-50/40 via-card to-background shadow-premium ring-1 ring-black/[0.06]">
+          <div
+            className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-amber-500 via-primary to-amber-700"
+            aria-hidden
+          />
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Fechar"
+            className="absolute right-3 top-3 z-10 rounded-full bg-background/95 p-2 text-foreground shadow-card transition-colors hover:bg-primary hover:text-primary-foreground sm:right-4 sm:top-4"
+          >
+            <X className="h-5 w-5" />
+          </button>
+
+          <div className="border-b border-border/60 bg-gradient-to-r from-card to-amber-50/35 px-5 pb-5 pt-6 pr-14 sm:px-8 sm:pb-6 sm:pt-8 sm:pr-16">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-2 rounded-full bg-primary/15 px-3 py-1 text-xs font-bold text-brown-dark">
+                <Clock className="h-3.5 w-3.5 shrink-0 text-primary" />
+                {event.time}
+              </span>
+              <span
+                className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold ${stage.className}`}
+              >
+                {stage.label}
+              </span>
+              <span className="inline-flex items-center rounded-full border border-amber-500/35 bg-amber-100/90 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.12em] text-amber-950">
+                Flyer oficial
+              </span>
+            </div>
+            <h2 className="font-playfair mt-4 text-3xl font-extrabold leading-tight tracking-tight text-foreground sm:text-4xl">
+              {event.speaker}
+            </h2>
+            <p className="mt-2 text-lg font-medium text-muted-foreground">{event.title}</p>
+          </div>
+
+          <div className="p-4 sm:p-6 md:p-8">
+            <div className="overflow-hidden rounded-xl border border-amber-900/10 bg-gradient-to-b from-white to-amber-50/40 shadow-inner ring-1 ring-black/[0.05]">
+              <img
+                src={event.image}
+                alt={`${event.speaker} — ${event.title}`}
+                className="mx-auto block w-full max-h-[min(80vh,880px)] object-contain px-2 py-4 sm:px-4 sm:py-6"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+            <p className="mt-5 text-center text-sm text-muted-foreground">
+              Material visual de divulgação — sem mini currículo de palestrante.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const details = [
     event.location && { icon: MapPin, label: event.location },
@@ -1159,6 +1360,14 @@ const EventDetailsModal = ({
               <p className="mt-3 text-muted-foreground leading-8">
                 {event.bio ?? 'Currículo em breve.'}
               </p>
+              {event.bioGuest && (
+                <>
+                  <span className="mt-5 block text-xs font-bold uppercase tracking-wide text-primary">
+                    {event.bioGuestHeading ?? 'Convidado'}
+                  </span>
+                  <p className="mt-3 text-muted-foreground leading-8">{event.bioGuest}</p>
+                </>
+              )}
             </div>
           </div>
         </div>
