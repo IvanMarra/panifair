@@ -281,7 +281,11 @@ const events: EventItem[] = [
     location: 'Belo Horizonte',
     format: 'Talk show',
     tag: 'Marketing digital',
-    image: '/assets/palestrantes/Sueli_Braga.png',
+    images: [
+      '/assets/palestrantes/Sueli_Braga.png',
+      '/assets/palestrantes/igor_editado.png',
+      '/assets/palestrantes/Filipe%20Vidotti.png',
+    ],
   },
   {
     id: 'igor-martins',
@@ -448,7 +452,7 @@ const events: EventItem[] = [
     stage: 'principal',
     time: 'A confirmar',
     speaker: 'Patrick Catapano',
-    title: 'Tema a definir',
+    title: 'PAM - Padaria Artesanal Mineira.Todos Juntos pelo pão.',
     initials: 'PC',
     format: 'Convidado',
     tag: 'Convidado especial',
