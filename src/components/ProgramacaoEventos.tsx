@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { Fragment, useMemo, useState } from 'react';
 import {
   CalendarDays,
   ChevronRight,
@@ -28,9 +28,13 @@ type EventItem = {
   status?: string;
   tag: string;
   bio?: string;
+  /** Nome exibido acima da bio principal em talks com vários participantes */
+  bioHostHeading?: string;
   /** Segundo currículo (ex.: convidado no mesmo card) */
   bioGuest?: string;
   bioGuestHeading?: string;
+  /** Currículos adicionais (ex.: convidadas em talk show) */
+  bioGuests?: Array<{ heading: string; text: string }>;
   image?: string;
   /** `contain` evita cortar logos/arte institucional na lateral */
   imageFit?: 'contain' | 'cover';
@@ -472,7 +476,7 @@ const events: EventItem[] = [
     day: 'sabado',
     stage: 'feminino',
     time: '16:30 às 17:20',
-    speaker: 'Talk Show: Rose Maffille recebe convidadas - Ana Carolina Toledo & Rita Gonçalves',
+    speaker: 'Talk Show: Rose Maffille recebe convidadas - Anna Carolina Toledo & Rita Gonçalves',
     title: 'A Virada de Chave da Mulher na Empresa Familiar',
     initials: 'RM',
     location: 'Belo Horizonte',
@@ -481,9 +485,23 @@ const events: EventItem[] = [
     images: [
       '/assets/palestrantes/rose_maffille_no_background_min.png',
       '/assets/palestrantes/Ana_Carolina_Tholedo.png',
+      '/assets/palestrantes/Rita_Goncalves.png',
     ],
+    bioHostHeading: 'Rose Maffille',
     bio:
-      'É proprietária da Padaria Maffille, vencedora do prêmio de Melhor Padaria pela Revista Panificação Brasileira. Com mais de 10 anos de experiência no setor, é curadora da Padaria Modelo e se destaca pela sua atuação estratégica na gestão de produção. \n Nascida em Barbacena e residente em Belo Horizonte há mais de 12 anos, encontrou na panificação sua verdadeira vocação. À frente da Maffille, consolidou a marca como referência no segmento, conquistando, em apenas 3 anos, um dos prêmios mais conceituados da panificação brasileira. É administradora e gestora de expansão da Rede Mafille, reconhecida como uma das padarias de maior destaque em Belo Horizonte. Com mais de 10 anos de experiência no setor da panificação, construiu uma trajetória marcada pela liderança estratégica, visão de crescimento e forte atuação feminina no mercado. Sua carreira se destaca pela capacidade de unir gestão, inovação e desenvolvimento de equipes em um segmento cada vez mais competitivo.',
+      'É proprietária da Padaria Maffille, vencedora do prêmio de Melhor Padaria pela Revista Panificação Brasileira. Com mais de 10 anos de experiência no setor, é curadora da Padaria Modelo e se destaca pela sua atuação estratégica na gestão de produção. Nascida em Barbacena e residente em Belo Horizonte há mais de 12 anos, encontrou na panificação sua verdadeira vocação. À frente da Maffille, consolidou a marca como referência no segmento, conquistando, em apenas 3 anos, um dos prêmios mais conceituados da panificação brasileira. É administradora e gestora de expansão da Rede Mafille, reconhecida como uma das padarias de maior destaque em Belo Horizonte. Com mais de 10 anos de experiência no setor da panificação, construiu uma trajetória marcada pela liderança estratégica, visão de crescimento e forte atuação feminina no mercado. Sua carreira se destaca pela capacidade de unir gestão, inovação e desenvolvimento de equipes em um segmento cada vez mais competitivo.',
+    bioGuests: [
+      {
+        heading: 'Anna Carolina Tholedo',
+        text:
+          'Especialista em Equipamentos para Gastronomia | Confeitaria. Profissional formada em Confeitaria, com sólida atuação no setor gastronômico e ampla experiência em equipamentos profissionais para panificação, confeitaria e pizzaria. Atualmente, atua como especialista na Nathional Cook, auxiliando clientes na escolha estratégica de equipamentos, com foco em produtividade, padronização e crescimento de negócios gastronômicos. Possui perfil consultivo @annacarolinatholedo, com forte habilidade em entender necessidades produtivas e indicar soluções que agregam eficiência, qualidade e rentabilidade aos processos.',
+      },
+      {
+        heading: 'Rita Gonçalves',
+        text:
+          'Fundadora da Padaria de Sucesso e especialista em marketing e branding para padarias. Panificadora, pós-graduada em mkt e design. Especialista em marketing, conteúdo e branding. Fundadora do Padaria de Sucesso e criadora da marca Eu amo Pão. Presidente da Amip, diretora da Abip e presidente da Abip Jovem.',
+      },
+    ],
   },
   {
     id: 'karla-rocha',
@@ -930,6 +948,46 @@ const SummaryCard = ({ label, value }: { label: string; value: string }) => (
   </div>
 );
 
+const EventBioBlock = ({
+  event,
+  variant,
+}: {
+  event: EventItem;
+  variant: 'card' | 'modal';
+}) => {
+  const bodyClass =
+    variant === 'card'
+      ? 'mt-2 text-sm leading-6 text-muted-foreground [display:-webkit-box] [-webkit-line-clamp:4] [-webkit-box-orient:vertical] overflow-hidden'
+      : 'mt-3 text-muted-foreground leading-8';
+  const sectionGap = variant === 'card' ? 'mt-3' : 'mt-5';
+  const headingClass = 'text-xs font-bold uppercase tracking-wide text-primary';
+
+  const extraGuests = [
+    ...(event.bioGuest
+      ? [{ heading: event.bioGuestHeading ?? 'Convidado', text: event.bioGuest }]
+      : []),
+    ...(event.bioGuests ?? []),
+  ];
+
+  return (
+    <>
+      <span className={headingClass}>Mini currículo</span>
+      {event.bioHostHeading && (
+        <span className={`${sectionGap} block text-sm font-bold text-foreground`}>
+          {event.bioHostHeading}
+        </span>
+      )}
+      <p className={bodyClass}>{event.bio ?? 'Currículo em breve.'}</p>
+      {extraGuests.map((guest) => (
+        <Fragment key={guest.heading}>
+          <span className={`${sectionGap} block ${headingClass}`}>{guest.heading}</span>
+          <p className={bodyClass}>{guest.text}</p>
+        </Fragment>
+      ))}
+    </>
+  );
+};
+
 const speakerPhotoUrls = (event: Pick<EventItem, 'image' | 'images'>): string[] | null => {
   const fromList = event.images?.filter(Boolean);
   if (fromList?.length) return fromList;
@@ -1205,22 +1263,7 @@ const EventCard = ({
           )}
 
           <div className="mt-5 rounded-lg border border-border/60 bg-card/70 p-4">
-            <span className="text-xs font-bold uppercase tracking-wide text-primary">
-              Mini currículo
-            </span>
-            <p className="mt-2 text-sm leading-6 text-muted-foreground [display:-webkit-box] [-webkit-line-clamp:4] [-webkit-box-orient:vertical] overflow-hidden">
-              {event.bio ?? 'Currículo em breve.'}
-            </p>
-            {event.bioGuest && (
-              <>
-                <span className="mt-3 block text-xs font-bold uppercase tracking-wide text-primary">
-                  {event.bioGuestHeading ?? 'Convidado'}
-                </span>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground [display:-webkit-box] [-webkit-line-clamp:4] [-webkit-box-orient:vertical] overflow-hidden">
-                  {event.bioGuest}
-                </p>
-              </>
-            )}
+            <EventBioBlock event={event} variant="card" />
           </div>
 
           <div className="mt-auto pt-5 flex items-center justify-between gap-4">
@@ -1388,20 +1431,7 @@ const EventDetailsModal = ({
             )}
 
             <div className="mt-7 border-t border-border/70 pt-6">
-              <span className="text-xs font-bold uppercase tracking-wide text-primary">
-                Mini currículo
-              </span>
-              <p className="mt-3 text-muted-foreground leading-8">
-                {event.bio ?? 'Currículo em breve.'}
-              </p>
-              {event.bioGuest && (
-                <>
-                  <span className="mt-5 block text-xs font-bold uppercase tracking-wide text-primary">
-                    {event.bioGuestHeading ?? 'Convidado'}
-                  </span>
-                  <p className="mt-3 text-muted-foreground leading-8">{event.bioGuest}</p>
-                </>
-              )}
+              <EventBioBlock event={event} variant="modal" />
             </div>
           </div>
         </div>
