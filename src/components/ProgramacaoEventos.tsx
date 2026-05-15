@@ -503,13 +503,16 @@ const events: EventItem[] = [
     day: 'sabado',
     stage: 'fermento',
     time: '14:00 às 15:00',
-    speaker: 'William Mattos',
+    speaker: 'Carolina Câmara e William Mattos',
     title: 'Painel Liderança na panificação',
     initials: 'WM',
     location: 'Belo Horizonte',
     format: 'Painel',
     tag: 'Liderança',
-    image: '/assets/palestrantes/William_Matos.png',
+    images: [
+      '/assets/palestrantes/Carolina_Camara.png',
+      '/assets/palestrantes/William_Matos.png',
+    ],
     bio:
       'Publicitário com mais de R$ 20 milhões em faturamento gerado em vendas e marketing, é fundador da Forno Criativo, consultor comercial da Abrasel Minas e mentor focado em resultados para gastronomia e food service.',
   },
