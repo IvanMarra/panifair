@@ -532,7 +532,7 @@ const events: EventItem[] = [
     day: 'sabado',
     stage: 'fermento',
     time: '16:00 às 16:50',
-    speaker: 'Claudete Bunge',
+    speaker: 'Claudete Pereira',
     title: 'De Grão em Pão: formando profissionais para o mercado da Panificação',
     initials: 'CB',
     organization: 'Sebrae',
@@ -568,6 +568,7 @@ const events: EventItem[] = [
     organization: 'Invista Foods',
     format: 'Fermentação natural',
     tag: 'Futuro',
+    image: '/assets/palestrantes/Marilda.png',
     bio:
       'Engenheiras de Alimentos e sócias da Invista Foods, unem experiência técnica e visão estratégica para transformar negócios do setor alimentício. Marilda é especialista em panificação e desenvolvimento de produtos, liderando projetos e treinamentos práticos. Silvia é especialista em layout industrial, estruturação física e processos produtivos, conduzindo projetos voltados à eficiência operacional e crescimento. Invista Foods & Invista Ensina: consultoria de alimentos com mais de 700 projetos atendidos, atuamos na transformação de negócios do setor de alimentos por meio de gestão de processos, estruturação física e desenvolvimento de produtos. O Invista Ensina oferece cursos de panificação, confeitaria e gestão para empreendedores que buscam crescer com técnica e resultados reais.',
   },
